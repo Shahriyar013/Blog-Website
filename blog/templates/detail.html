@@ -1,0 +1,15 @@
+<h1>{{ post.title }}</h1>
+<p>{{ post.text }}</p>
+
+<p>Like: {{ like }}</p>
+<a href="/like/{{ post.id }}/">Like</a>
+
+{% for c in com %}
+<p>{{ c.user }}: {{ c.text }}</p>
+{% endfor %}
+
+<form method="POST" action="/comment/{{ post.id }}/">
+{% csrf_token %}
+<input name="text">
+<button>Comment</button>
+</form>
